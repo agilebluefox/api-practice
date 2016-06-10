@@ -1,6 +1,6 @@
 $(function(){
     // Initialize global variables.
-    var nextPageToken, previousPageToken;
+    var searchTerm, nextPageToken, previousPageToken;
 
     // Setup the lightbox when the thumbnail image is clicked.
     $('#search-results').on('click', 'a.video', function(e) {
@@ -9,7 +9,10 @@ $(function(){
         var html =
         $('#lightbox-overlay').show();
         $('#lightbox').show();
-        $('#lightbox').html('<iframe width="560" height="315" src="https://www.youtube.com/embed/' + id + '" frameborder="0" allowfullscreen></iframe>');
+        $('#lightbox').html('<iframe width="560" height="315"\
+                                 src="https://www.youtube.com/embed/'
+                                 + id
+                                 + '" frameborder="0" allowfullscreen></iframe>');
     });
 
     // Hide the lightbox components when the overlay is clicked.
@@ -23,7 +26,7 @@ $(function(){
     // Get the search term for the api request.
     $('#search-term').submit(function(e){
         e.preventDefault();
-        var searchTerm = $('#query').val();
+        searchTerm = $('#query').val();
         getResults(searchTerm);
     });
 
@@ -87,9 +90,16 @@ $(function(){
             src = value.snippet.thumbnails.medium.url;
             id = value.id.videoId;
             channel = value.snippet.channelId;
-            html_img = '<div class="thumbnail"><a class="video" id="' + id + '" href="' + viewUrl + id + '"><img src="' + src + '" /></a></div>';
-            html_channel = '<div class="channel"><a target="_blank" href="' + channelUrl + channel + '"><button class="btn" type="button" name="channel" value="Go To Channel">Go To Channel</button></a></div>';
-            html += '<li><div class="results-wrapper">' + html_img + html_channel + '</div></li>';
+            html_img = '<div class="thumbnail"><a class="video" id="'
+                             + id + '" href="' + viewUrl + id
+                             + '"><img src="' + src + '" /></a></div>';
+            html_channel = '<div class="channel"><a target="_blank" href="'
+                            + channelUrl + channel
+                            + '"><button class="btn" type="button" \
+                            name="channel" value="Go To Channel">\
+                            Go To Channel</button></a></div>';
+            html += '<li><div class="results-wrapper">' + html_img
+                        + html_channel + '</div></li>';
         });
         $('#search-results').html(html);
     }

@@ -11,7 +11,7 @@ button {
 }
 
 .container {
-    margin: 10px;
+    margin-top: 20px;
 }
 
 #lightbox-overlay {
@@ -28,9 +28,12 @@ button {
 }
 
 #lightbox {
+    width: 560px;
+    height: 315px;
     position: absolute;
-    top: 25%;
-    left: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
     z-index: 10;
 }
